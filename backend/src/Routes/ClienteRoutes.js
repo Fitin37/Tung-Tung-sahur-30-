@@ -7,6 +7,6 @@ router.
 route("/")
 .get(clienteCon.get);
 
-router.route("/id").put(clienteCon.put).delete(clienteCon.delete);
+router.route("/:id").put(clienteCon.put).delete(clienteCon.delete);
 
 export default router;

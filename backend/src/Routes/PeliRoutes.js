@@ -15,8 +15,8 @@ route("/")
 
 
 router.
-route("/id")
-.delete(peliCon.delete)
-.put(upload.single("img"),peliCon.put);
+route("/:id")
+.put(upload.single("img"),peliCon.put)
+.delete(peliCon.delete);
 
 export default router;

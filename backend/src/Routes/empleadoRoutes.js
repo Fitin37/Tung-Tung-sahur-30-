@@ -9,7 +9,7 @@ route("/")
 .get(empCon.get);
 
 router. 
-route("/id")
+route("/:id")
 .delete(empCon.delete)
 .put(empCon.put);
 
