@@ -32,7 +32,7 @@ passworRecovery.requestCode = async (req,res) =>{
         const codex=Math.floor(10000+ Math.random()*90000).toString();
 
         const token = jwt.sign(
-            {email,codex,usertype,verified:false},
+            {correo,codex,usertype,verified:false},
             config.JWT.secret,
             {expiresIn: "20m"}
         );
@@ -41,7 +41,7 @@ passworRecovery.requestCode = async (req,res) =>{
         res.cookie("tokenRecoveryCode",token,{maxAge: 20 *60 * 1000});
 
         await sendEmail(
-            email,
+            correo,
             "Tu codigo de verificacion",
             "Hola este es tu codigo de verificacion",
             HTMLRecoveryEmail(codex)

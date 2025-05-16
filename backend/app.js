@@ -6,7 +6,7 @@ import clienteRoutes from "./src/Routes/ClienteRoutes.js";
 import registerCliente from "./src/Routes/registerClienteRoutes.js";
 import Login from "./src/Routes/Login.js";
 import RecoveryRoutes from "./src/Routes/RecoveryRoutes.js"
-
+import Logout from "./src/Routes/LogoutRoutes.js";
 const app = express();
 app.use(express.json());
 
@@ -18,6 +18,7 @@ app.use("/api/registerEmpRoutes",regiempRoutes);
 app.use("/api/ClienteRoutes",clienteRoutes);
 app.use("/api/registerClienteRoutes",registerCliente);
 app.use("/api/Login",Login);
+app.use("/api/Logout",Logout);
 app.use("/api/recoveryPassword",RecoveryRoutes);
 
 export default app;
