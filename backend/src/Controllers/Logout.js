@@ -1,6 +1,7 @@
 const LogoutCon= {};
+
 LogoutCon.logout = async (req,res) => {
-    res.clearCookie("AuthToken");
+    res.clearCookie("authToken",{httpOnly: true});
 
     return res.json({message : "Sesion cerrada"});
 }

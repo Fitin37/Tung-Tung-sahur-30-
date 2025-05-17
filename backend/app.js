@@ -7,11 +7,12 @@ import registerCliente from "./src/Routes/registerClienteRoutes.js";
 import Login from "./src/Routes/Login.js";
 import RecoveryRoutes from "./src/Routes/RecoveryRoutes.js"
 import Logout from "./src/Routes/LogoutRoutes.js";
+import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 
-app.use(express.json());
 app.use("/api/PeliRoutes",PeliRoutes);
 app.use("/api/empleadoRoutes",empRoutes);
 app.use("/api/registerEmpRoutes",regiempRoutes);

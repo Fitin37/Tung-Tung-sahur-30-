@@ -28,7 +28,7 @@ registerCliente.register = async (req,res) => {
                 if (error) console.log("error" + error)
 
                 res.cookie("authToken", token)
-                res.json({ message: "empleado guardado" })
+                res.json({ message: "cliente guardado" })
             }
 
         )

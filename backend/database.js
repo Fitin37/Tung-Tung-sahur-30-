@@ -1,14 +1,17 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+import {config} from "./src/config.js";
 
-// 1- Configuro la URI o dirección de la base de datos
-const URI = "mongodb://localhost:27017/CineMark2025";
 
-// 2- Conecto la base de datos
+dotenv.config();
+
+const URI=config.db.URI;
+
+
 mongoose.connect(URI);
 
 // ------ Comprobar que todo funciona ------
 
-// 3- Creo una constante que es igual a la conexión
 const connection = mongoose.connection;
 
 // Veo si funciona

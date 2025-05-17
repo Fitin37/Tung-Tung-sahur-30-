@@ -1,4 +1,6 @@
 import empModel from "../models/Empleados.js"
+import bcryptjs from "bcryptjs";
+
 
 const empCon={};
 
@@ -7,22 +9,42 @@ empCon.get = async (req,res) =>{
     res.json(empleado);
 }
 
-empCon.put = async (req,res) =>{
-    const {nombre,correo,contrasena,telefono,dirreccion,puesto,fehcaContra,salario,DUI}=req.body;
-    await empModel.findByIdAndUpdate(
-        req.params.id,{
-            nombre,
-            correo,
-            contrasena,
-            telefono,
-            dirreccion,
-            puesto,
-            fehcaContra,
-            salario,
-            DUI
-        },{new:true}
-    );
-    res.json({message:"Empleado acttualizado con exito"})
+empCon.put = async (req, res) => {
+  const {
+    nombre,
+    correo,
+    contrasena,
+    telefono,
+    dirreccion,
+    puesto,
+    fehcaContra,
+    salario,
+    DUI,
+  } = req.body;
+
+  let passHashed = contrasena;
+
+  if (contrasena) {
+    passHashed = await bcryptjs.hash(contrasena, 10);
+  }
+
+  await empModel.findByIdAndUpdate(
+    req.params.id,
+    {
+      nombre,
+      correo,
+      contrasena: passHashed,
+      telefono,
+      dirreccion,
+      puesto,
+      fehcaContra,
+      salario,
+      DUI,
+    },
+    { new: true }
+  );
+
+  res.json({ message: "Empleado actualizado con éxito" });
 };
 
 empCon.delete = async (req,res) =>{
