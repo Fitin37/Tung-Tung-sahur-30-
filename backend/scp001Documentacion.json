@@ -1,0 +1,482 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Hola esta es mi api para tung tung tung sahur",
+    "description": "This is a simple API",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/scp001/tungtungsahur/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "admins",
+      "description": "Secured Admin-only calls"
+    },
+    {
+      "name": "developers",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "paths": {
+    "/inventory": {
+      "get": {
+        "tags": [
+          "developers"
+        ],
+        "summary": "searches inventory",
+        "description": "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "operationId": "searchInventory",
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "pass an optional search string for looking up inventory",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "number of records to skip for pagination",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of records to return",
+            "required": false,
+            "schema": {
+              "maximum": 50,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria"
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/api/PeliRoutes": {
+      "get": {
+        "tags": [
+          "Peliculas"
+        ],
+        "summary": "Your GET endpoint",
+        "description": "este metodo nos ayuda a obtener los datos de la base",
+        "operationId": "get-api-PeliRoutes",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "header-0": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "I'm a teapot (RFC 2324)"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Peliculas"
+        ],
+        "summary": "Your PUT endpoint",
+        "description": "Este metodo nos ayudara actualizar los datos de la base",
+        "operationId": "put-api-PeliRoutes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Actualiza los datos",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/api_PeliRoutes_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Peliculas"
+        ],
+        "summary": "Your POST endpoint",
+        "description": "Este metodo nos ayudara a insertar datos a nuestra base de datos",
+        "operationId": "post-api-PeliRoutes",
+        "requestBody": {
+          "description": "Escribe los datos de la pelicula,correctamente",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/api_PeliRoutes_body_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK brou"
+          },
+          "418": {
+            "description": "I'm a teapot (RFC 2324)(BUILD)"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Peliculas"
+        ],
+        "summary": "Your DELETE endpoint",
+        "description": "Este metodo nos ayuda a eliminar datos de nuestra base",
+        "operationId": "delete-api-PeliRoutes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/ClienteRoutes": {
+      "get": {
+        "tags": [
+          "Clientes"
+        ],
+        "summary": "Your GET endpoint",
+        "description": "se manda a traer los datos",
+        "operationId": "get-api-ClienteRoutes",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Clientes"
+        ],
+        "summary": "Your PUT endpoint",
+        "description": "Se actualizan los datos",
+        "operationId": "put-api-ClienteRoutes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_ClienteRoutes_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Clientes"
+        ],
+        "summary": "Your POST endpoint",
+        "description": "Se insertan los datos en la base",
+        "operationId": "post-api-ClienteRoutes",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_ClienteRoutes_body_1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Clientes"
+        ],
+        "summary": "Your DELETE endpoint",
+        "description": "Éste metodo se eliminan los datos desde la base",
+        "operationId": "delete-api-ClienteRoutes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "api_PeliRoutes_body": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ytvrhkhyzjfko"
+            }
+          },
+          "descripcion": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "3ed8ykt95rap8"
+            }
+          },
+          "director": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "f7olink1dvwzr"
+            }
+          },
+          "genero": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0ukzu6yt3bgrf"
+            }
+          },
+          "anio": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "ofjbg0gvl36e7"
+            }
+          },
+          "duracion": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "0njbomeaao8uq"
+            }
+          },
+          "img": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "f3wtebu86lh06"
+            }
+          }
+        }
+      },
+      "api_PeliRoutes_body_1": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "6f0glg7o6vzg6"
+            }
+          },
+          "descripcion": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xomzyvx34kec9"
+            }
+          },
+          "director": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "b7iibzteuader"
+            }
+          },
+          "genero": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "vafv0ognqs5it"
+            }
+          },
+          "anio": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "azjp04xb1wz4o"
+            }
+          },
+          "duracion": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "bjj930zwxlsiy"
+            }
+          },
+          "img": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "bm4yho0dk75ag"
+            }
+          }
+        }
+      },
+      "api_ClienteRoutes_body": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9bgsb0fowt044"
+            }
+          },
+          "correo": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ptx8f29jjnp1u"
+            }
+          },
+          "contrasena": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ddamz6bihcwzu"
+            }
+          },
+          "telefono": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "qfwqonzn9z825"
+            }
+          },
+          "dirrecion": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "h9k1cngva40vd"
+            }
+          },
+          "": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "gozgouo1enybv"
+            }
+          }
+        }
+      },
+      "api_ClienteRoutes_body_1": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "1ugd7f4eg9r3b"
+            }
+          },
+          "correo": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "fudjb19qgw8e1"
+            }
+          },
+          "contrasena": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pvbkd1y40f8xb"
+            }
+          },
+          "telefono": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "789uoqjoi16n8"
+            }
+          },
+          "dirrecion": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "l2rselouvefzq"
+            }
+          },
+          "DUI": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "dpvmdlos25c9q"
+            }
+          }
+        }
+      }
+    }
+  }
+}
